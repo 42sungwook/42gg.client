@@ -1,33 +1,26 @@
 import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { MatchMode } from 'types/mainType';
 import { myRankState, scrollState } from 'utils/recoil/myRank';
 import styles from 'styles/rank/RankList.module.scss';
+import { ToggleMode } from 'types/rankTypes';
 
-interface MyRankProps {
-  toggleMode: MatchMode;
+interface MyRankProp {
+  toggleMode: ToggleMode;
 }
 
-export default function MyRank({ toggleMode }: MyRankProps) {
+export default function MyRank(prop: MyRankProp) {
+  const { toggleMode } = prop;
   const myRank = useRecoilValue(myRankState);
   const setIsScroll = useSetRecoilState(scrollState);
-  const rankType = toggleMode === 'rank' ? '랭크' : '열정';
-  const isRanked = myRank[toggleMode] === 0 ? 'unrank' : 'rank';
+  const rankType = toggleMode === 'RANK' ? 'rank' : 'vip';
+  const isRanked = myRank[toggleMode] === -1 ? 'unrank' : 'RANK';
   const content = {
     unrank: {
       style: '',
-      message: [
-        `💡 나의 ${
-          rankType + (toggleMode === 'rank' ? '가' : '이')
-        } 정해지지 않았습니다 💡`,
-      ],
+      message: [`My ${rankType}:`, ` 00`],
     },
-    rank: {
+    RANK: {
       style: styles.rank,
-      message: [
-        `🚀🚀 나의 ${rankType}`,
-        ` ${myRank[toggleMode]}위`,
-        ' 바로가기 🚀🚀',
-      ],
+      message: [`My ${rankType}:`, ` ${myRank[toggleMode]}`],
     },
   };
 
