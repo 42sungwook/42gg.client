@@ -4,8 +4,11 @@ import Cookies from 'js-cookie';
 const baseURL = `${process.env.NEXT_PUBLIC_SERVER_ENDPOINT}`;
 const manageBaseURL = process.env.NEXT_PUBLIC_MANAGE_SERVER_ENDPOINT ?? '/';
 
-const instance = axios.create({ baseURL });
-const instanceInManage = axios.create({ baseURL: manageBaseURL });
+const instance = axios.create({ baseURL, withCredentials: true });
+const instanceInManage = axios.create({
+  baseURL: manageBaseURL,
+  withCredentials: true,
+});
 
 let accessToken = '';
 
