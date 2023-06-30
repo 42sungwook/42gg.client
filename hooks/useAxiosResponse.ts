@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { instance } from 'utils/axios';
 import { loginState } from 'utils/recoil/login';
-import { useSetRecoilState } from 'recoil';
 import { errorState } from 'utils/recoil/error';
 
 export default function useAxiosResponse() {
