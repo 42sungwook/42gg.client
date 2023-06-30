@@ -15,7 +15,7 @@ const useLoginCheck = (): useLoginCheckReturn => {
   const router: NextRouter = useRouter();
   const presentPath: string = router.asPath;
   const token: string = presentPath.split('?token=')[1];
-  const refreshToken: string = Cookies.get('refresh_token');
+  const refreshToken: string = Cookies.get('refresh_token') || '';
 
   useEffect(() => {
     if (token) {
