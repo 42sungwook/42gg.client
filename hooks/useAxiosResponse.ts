@@ -52,13 +52,11 @@ export default function useAxiosResponse() {
   );
 
   useEffect(() => {
-	if (refreshToken) {
-		if (localStorage.getItem('42gg-token')) {
-		  setLogin(true);
-		} else {
-		  accessTokenHandler();
-		  setLogin(true);
-		}
+	if (localStorage.getItem('42gg-token')) {
+		setLogin(true);
+	} else {
+		accessTokenHandler();
+		setLogin(true);
 	}
   }, []);
 
