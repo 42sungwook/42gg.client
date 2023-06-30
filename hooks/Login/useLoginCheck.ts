@@ -28,7 +28,7 @@ const useLoginCheck = (): useLoginCheckReturn => {
 	  setLoggedIn(true);
 	}
     setIsLoading(false);
-  }, []);
+  }, [refreshToken]);
   return [isLoading, loggedIn, firstVisited];
 };
 
