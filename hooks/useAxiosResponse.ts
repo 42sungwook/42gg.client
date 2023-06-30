@@ -4,6 +4,7 @@ import { instance } from 'utils/axios';
 import { loginState } from 'utils/recoil/login';
 import { errorState } from 'utils/recoil/error';
 import Cookies from 'js-cookie';
+import { AxiosError, AxiosResponse } from 'axios';
 
 export default function useAxiosResponse() {
   const setLogin = useSetRecoilState(loginState);
